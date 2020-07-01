@@ -13,7 +13,7 @@
     <groupId>org.solution.x</groupId>
     <artifactId>persistence-engine</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Reservation Engine persistence-engine</name>
+    <name>persistence-engine-library</name>
     <packaging>jar</packaging>
 
     <dependencies>
