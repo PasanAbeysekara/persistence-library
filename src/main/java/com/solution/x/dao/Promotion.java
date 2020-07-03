@@ -16,6 +16,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.sql.Date;
@@ -61,6 +63,17 @@ public class Promotion extends RepresentationModel<Promotion>
 
 	@Column(name = "live")
 	private Boolean live;
+
+	@Column(name = "maxed_out_landing")
+	private Boolean maxedOutLanding;
+
+	@Column(name = "maxed_out_search")
+	private Boolean maxedOutSearch;
+
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+	private PromotionStatistics statistics;
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
