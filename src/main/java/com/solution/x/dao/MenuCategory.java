@@ -1,5 +1,6 @@
 package com.solution.x.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.solution.x.dao.key.MenuCategoryID;
@@ -34,13 +35,14 @@ public class MenuCategory extends RepresentationModel<MenuCategory>
     @Column(name = "name")
     private String name;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("menu_id")
-    @JoinColumn(name = "menu_id")
+    @JoinColumn(name = "menu_id", insertable = false, updatable = false)
     @ToString.Exclude
     private Menu menu;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "choiceMenuCategory")
+    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "choiceMenuCategory")
     @ToString.Exclude
-    private Set<MenuChoices> categoryChoices;
+    private Set<MenuChoices> categoryChoices;*/
 }

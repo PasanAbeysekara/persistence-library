@@ -1,5 +1,6 @@
 package com.solution.x.dao.sys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.solution.x.dao.PropChoices;
@@ -20,7 +21,7 @@ import java.util.Set;
 @Table(name = "sys_choices")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "choice_id")
+        property = "choiceId")
 public class Choices extends RepresentationModel<Choices>
 {
     @Id
@@ -35,7 +36,8 @@ public class Choices extends RepresentationModel<Choices>
     @Column(name = "description")
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "choice", orphanRemoval = false)
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sysChoice", orphanRemoval = false)
     @PrimaryKeyJoinColumn
     private Set<PropChoices> propChoices;
 }

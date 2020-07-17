@@ -1,6 +1,7 @@
 package com.solution.x.dao;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.solution.x.dao.sys.Choices;
 import lombok.Data;
@@ -46,17 +47,18 @@ public class PropChoices extends RepresentationModel<PropChoices>
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "prop_id")
+    @JoinColumn(name = "prop_id", insertable = false, updatable = false)
     @ToString.Exclude
     private Property property;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "choice_id")
     @ToString.Exclude
-    private Choices choice;
+    private Choices sysChoice;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "propChoice", orphanRemoval = true)
+    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "propChoice", orphanRemoval = true)
     @PrimaryKeyJoinColumn
     @ToString.Exclude
-    private Set<MenuChoices> menuChoices;
+    private Set<MenuChoices> menuChoices;*/
 }

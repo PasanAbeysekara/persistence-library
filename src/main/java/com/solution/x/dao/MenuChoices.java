@@ -1,5 +1,6 @@
 package com.solution.x.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.solution.x.dao.key.MenuChoiceID;
 import lombok.Data;
 import lombok.ToString;
@@ -19,6 +20,7 @@ public class MenuChoices
     @ToString.Include
     private MenuChoiceID menuChoiceID;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "cat_id", referencedColumnName = "cat_id", updatable = false, insertable = false),
@@ -27,15 +29,15 @@ public class MenuChoices
     @ToString.Exclude
     private MenuCategory choiceMenuCategory;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("menu_id")
-    @JoinColumn(name = "menu_id")
+    @JoinColumn(name = "menu_id", insertable = false, updatable = false)
     @ToString.Exclude
-    private Menu choiceMenu;
+    private Menu choiceMenu;*/
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("prop_ch_id")
-    @JoinColumn(name = "prop_ch_id")
+    @JoinColumn(name = "prop_ch_id", insertable = false, updatable = false)
     @ToString.Exclude
-    private PropChoices propChoice;
+    private PropChoices propChoice;*/
 }

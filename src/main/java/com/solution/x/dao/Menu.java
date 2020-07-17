@@ -2,6 +2,7 @@ package com.solution.x.dao;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -48,6 +49,7 @@ public class Menu extends RepresentationModel<Menu>
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     private Set<PropMenu> properties;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Set<MenuCategory> menuCategories;
