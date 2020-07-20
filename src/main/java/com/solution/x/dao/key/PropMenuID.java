@@ -15,8 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PropMenuID implements Serializable
-{
+public class PropMenuID implements Serializable {
     @Column(name = "prop_id")
     private Long propId;
 

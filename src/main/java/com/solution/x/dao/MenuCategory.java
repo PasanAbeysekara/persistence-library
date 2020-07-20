@@ -1,13 +1,10 @@
 package com.solution.x.dao;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import com.solution.x.dao.key.MenuCategoryID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -18,31 +15,30 @@ import java.util.Set;
  */
 @Data
 @Entity
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "menu_category")
 @ToString
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "menuCategoryID"
+        property = "menuCategoryId"
 )
-public class MenuCategory extends RepresentationModel<MenuCategory>
-{
+public class MenuCategory {
     @EmbeddedId
-    @ToString.Include
-    private MenuCategoryID menuCategoryID;
+    @EqualsAndHashCode.Include
+    private MenuCategoryID menuCategoryId;
 
     @Size(max = 100)
     @Column(name = "name")
     private String name;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("menu_id")
-    @JoinColumn(name = "menu_id", insertable = false, updatable = false)
+    @JoinColumn(name = "menu_id", referencedColumnName = "menu_id", insertable = false, updatable = false)
     @ToString.Exclude
     private Menu menu;
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "choiceMenuCategory")
+    @OneToMany( mappedBy = "choiceCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
-    private Set<MenuChoices> categoryChoices;*/
+    private Set<MenuChoices> categoryChoices;
 }

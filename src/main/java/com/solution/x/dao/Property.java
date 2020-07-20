@@ -151,8 +151,13 @@ public class Property extends RepresentationModel<Property>
 	//TODO Cache this value using ehcache
 	private List<LocalTime> timeSlots;
 
-	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY)
-	private Set<PropMenu> propMenus;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "prop_menu",
+			joinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
+			inverseJoinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
+	)
+	private Set<Menu> menus;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropChoices> choices;

@@ -22,10 +22,14 @@ import java.util.Set;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "choiceId")
-public class Choices extends RepresentationModel<Choices>
-{
+public class Choices extends RepresentationModel<Choices> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "choices_gen",
+            sequenceName = "choices_choice_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(generator = "choices_gen", strategy = GenerationType.SEQUENCE)
     @Column(name = "choice_id", updatable = false, nullable = false)
     private Long choiceId;
 
@@ -37,7 +41,7 @@ public class Choices extends RepresentationModel<Choices>
     private String description;
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sysChoice", orphanRemoval = false)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sysChoice")
     @PrimaryKeyJoinColumn
     private Set<PropChoices> propChoices;
 }

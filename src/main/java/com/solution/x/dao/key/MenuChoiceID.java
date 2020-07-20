@@ -15,8 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class MenuChoiceID implements Serializable
-{
+public class MenuChoiceID implements Serializable {
     @Column(name = "menu_id")
     private Long menuId;
 
@@ -24,5 +23,5 @@ public class MenuChoiceID implements Serializable
     private Short categoryId;
 
     @Column(name = "prop_ch_id")
-    private int propChoiceId;
+    private Integer propChoiceId;
 }

@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author Tharindu Aththanayake
  */
-public interface PropChoicesRepository extends JpaRepository<PropChoices, Integer>
-{
+public interface PropChoicesRepository extends JpaRepository<PropChoices, Integer> {
 }

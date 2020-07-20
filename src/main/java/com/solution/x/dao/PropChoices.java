@@ -1,5 +1,6 @@
 package com.solution.x.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -11,31 +12,29 @@ import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 /**
  * @author Tharindu Aththanayake
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "prop_choices")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @ToString
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "propChoiceId"
 )
-public class PropChoices extends RepresentationModel<PropChoices>
-{
+public class PropChoices extends RepresentationModel<PropChoices> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     @Column(name = "prop_ch_id", updatable = false, nullable = false)
-    private int propChoiceId;
+    private Integer propChoiceId;
 
-    @Column(name = "prop_id", updatable = false, insertable = false)
+    @Column(name = "prop_id", insertable = false, updatable = false)
     private Long propId;
 
-    @Column(name = "choice_id", updatable = false, insertable = false)
+    @Column(name = "choice_id", insertable = false, updatable = false)
     private Long choiceId;
 
     @Size(max = 100)
@@ -46,6 +45,7 @@ public class PropChoices extends RepresentationModel<PropChoices>
     @Column(name = "description")
     private String description;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prop_id", insertable = false, updatable = false)
     @ToString.Exclude
@@ -57,8 +57,8 @@ public class PropChoices extends RepresentationModel<PropChoices>
     @ToString.Exclude
     private Choices sysChoice;
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "propChoice", orphanRemoval = true)
-    @PrimaryKeyJoinColumn
+    /*@JsonBackReference
     @ToString.Exclude
-    private Set<MenuChoices> menuChoices;*/
+    @OneToOne(mappedBy = "propChoice", fetch = FetchType.LAZY)
+    private MenuChoices menuChoice;*/
 }

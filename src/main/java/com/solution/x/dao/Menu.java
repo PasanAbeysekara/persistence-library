@@ -1,11 +1,9 @@
 package com.solution.x.dao;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -16,25 +14,26 @@ import java.util.Set;
  * @author Tharindu Aththanayake
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
+@ToString
 @Table(name = "menu")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "menuId"
 )
-public class Menu extends RepresentationModel<Menu>
-{
+public class Menu extends RepresentationModel<Menu> {
 
     @Id
-    @SequenceGenerator(
+    /*@SequenceGenerator(
             name = "menu_gen",
             sequenceName = "menu_seq",
             initialValue = 0,
             allocationSize = 1
     )
-    @GeneratedValue(generator = "menu_gen", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "menu_gen", strategy = GenerationType.SEQUENCE)*/
     @Column(name = "menu_id", updatable = false, nullable = false)
+    @EqualsAndHashCode.Include
     private Long menuId;
 
     @Size(max = 100)
@@ -46,15 +45,17 @@ public class Menu extends RepresentationModel<Menu>
     private String description;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
-    private Set<PropMenu> properties;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "prop_menu",
+            inverseJoinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
+            joinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
+    )
+    @ToString.Exclude
+    private Set<Property> properties;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
     private Set<MenuCategory> menuCategories;
 
-    /*@OneToMany(mappedBy = "choiceMenu", fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
-    private Set<MenuChoices> menuChoices;*/
 }
