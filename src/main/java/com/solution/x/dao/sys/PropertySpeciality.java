@@ -33,7 +33,7 @@ import java.util.Set;
 public class PropertySpeciality extends RepresentationModel<PropertySpeciality>
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "speciality_id", updatable = false, nullable = false)
 	private Short specialityId;
 
@@ -52,5 +52,5 @@ public class PropertySpeciality extends RepresentationModel<PropertySpeciality>
 			joinColumns = @JoinColumn(name = "speciality_id", referencedColumnName = "speciality_id")
 	)
 	@ToString.Exclude
-	private Set<Property> weekDefinitions;
+	private Set<Property> properties;
 }

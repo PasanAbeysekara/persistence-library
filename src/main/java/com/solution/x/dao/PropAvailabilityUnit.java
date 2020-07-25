@@ -1,5 +1,6 @@
 package com.solution.x.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -55,6 +56,7 @@ public class PropAvailabilityUnit extends RepresentationModel<PropAvailabilityUn
 	@ToString.Exclude
 	private AvailabilityUnit sysAvailabilityUnit;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("propId")
 	@JoinColumn(name = "prop_id")
