@@ -13,19 +13,7 @@ import lombok.ToString;
 import org.hibernate.annotations.Where;
 import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalTime;
@@ -162,6 +150,17 @@ public class Property extends RepresentationModel<Property>
 	@Transient
 	//TODO Cache this value using ehcache
 	private List<LocalTime> timeSlots;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "prop_menu",
+			joinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
+			inverseJoinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "menu_id")
+	)
+	private Set<Menu> menus;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<PropChoices> choices;
 
 	public List<LocalTime> getTimeSlots()
 	{

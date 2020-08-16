@@ -33,7 +33,7 @@ import java.util.Set;
 public class PaymentOptions extends RepresentationModel<PaymentOptions>
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "option_id", updatable = false, nullable = false)
 	private Short optionId;
 
@@ -49,5 +49,5 @@ public class PaymentOptions extends RepresentationModel<PaymentOptions>
 			joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "option_id")
 	)
 	@ToString.Exclude
-	private Set<Property> weekDefinitions;
+	private Set<Property> properties;
 }
