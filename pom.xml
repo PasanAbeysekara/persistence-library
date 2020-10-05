@@ -10,11 +10,36 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.solution.x</groupId>
-    <artifactId>persistence-engine</artifactId>
+    <groupId>com.thaprobit.res-engine</groupId>
+    <artifactId>persistence-library</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>persistence-engine-library</name>
+    <name>persistence-library</name>
     <packaging>jar</packaging>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Release Repo</name>
+            <url>https://thaprobit.jfrog.io/artifactory/hangouts-repo</url>
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <name>Snapshot Repo</name>
+            <url>https://thaprobit.jfrog.io/artifactory/hangouts-snapshot-repo</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Release Repo</name>
+            <url>https://thaprobit.jfrog.io/artifactory/hangouts-repo</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshot Repo</name>
+            <url>https://thaprobit.jfrog.io/artifactory/hangouts-snapshot-repo</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
