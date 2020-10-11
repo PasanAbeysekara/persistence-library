@@ -162,8 +162,8 @@ public class Property extends RepresentationModel<Property>
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropChoices> choices;
 
-	@Transient
-	private Map<String, List<String>> images;
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<PropMedia> propertyMedia;
 
 	public List<LocalTime> getTimeSlots()
 	{
@@ -187,11 +187,6 @@ public class Property extends RepresentationModel<Property>
 
 		return timeSlots;
 
-	}
-
-	public Map<String, List<String>> getImages()
-	{
-		return null;
 	}
 
 }
