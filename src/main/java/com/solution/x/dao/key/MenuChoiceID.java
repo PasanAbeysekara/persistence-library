@@ -15,13 +15,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class MenuChoiceID implements Serializable {
-    @Column(name = "menu_id")
-    private Long menuId;
+public class MenuChoiceID implements Serializable
+{
+	@Column(name = "menu_id")
+	private Long menuId;
 
-    @Column(name = "cat_id")
-    private Short categoryId;
+	@Column(name = "cat_id")
+	private Short categoryId;
 
-    @Column(name = "prop_ch_id")
-    private Integer propChoiceId;
+	@Column(name = "prop_ch_id")
+	private Integer propChoiceId;
 }

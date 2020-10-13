@@ -15,11 +15,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PropChoiceID implements Serializable {
+public class PropChoiceID implements Serializable
+{
+	@Column(name = "prop_ch_id")
+	private Integer propChoiceId;
 
-    @Column(name = "prop_ch_id")
-    private Integer propChoiceId;
-
-    @Column(name = "prop_id")
-    private Long propId;
+	@Column(name = "prop_id")
+	private Long propId;
 }

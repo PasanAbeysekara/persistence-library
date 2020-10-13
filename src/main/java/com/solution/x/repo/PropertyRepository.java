@@ -27,14 +27,14 @@ public interface PropertyRepository extends JpaRepository<Property, Long>
 	public Long getNextVal();
 
 	@Query(value = "SELECT Menu FROM Property p JOIN p.menus Menu WHERE p.propId =:id ")
-	Page<Menu> findPropertyMenus(@Param("id") Long propertyId, Pageable pageable);
+	Page<Menu> findPropertyMenus( @Param("id") Long propertyId, Pageable pageable );
 
-	Optional<PropContractAndTimeSlots> findByPropId(Long propId );
+	Optional<PropContractAndTimeSlots> findByPropId( Long propId );
 
 	@Query(value = "SELECT a.sysAvailabilityUnit FROM Property p JOIN p.availabilityUnits AS a WHERE p.propId = :id " +
 			"AND LOWER( a.sysAvailabilityUnit.code ) LIKE LOWER( concat( '%', :code, '%' ))" +
 			"AND LOWER( a.sysAvailabilityUnit.name ) LIKE LOWER( concat( '%', :name, '%' ))")
-	List<AvailabilityUnit> findPropertyAvailableUnits( @Param("id") Long propertyId,@Param("code") String code, @Param("name") String name );
+	List<AvailabilityUnit> findPropertyAvailableUnits( @Param("id") Long propertyId, @Param("code") String code, @Param("name") String name );
 
 
 }

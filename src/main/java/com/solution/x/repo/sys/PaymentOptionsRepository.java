@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 /**
  * @author Tharindu Aththanayake
  */
-public interface PaymentOptionsRepository extends JpaRepository<PaymentOptions, Short> {
+public interface PaymentOptionsRepository extends JpaRepository<PaymentOptions, Short>
+{
 
-    @Query(value = "SELECT coalesce( max( option_id ) + 1 , 0) AS next_option_id FROM {h-schema}payment_options", nativeQuery = true)
-    Short nextOptionId();
+	@Query(value = "SELECT coalesce( max( option_id ) + 1 , 0) AS next_option_id FROM {h-schema}payment_options", nativeQuery = true)
+	Short nextOptionId();
 }

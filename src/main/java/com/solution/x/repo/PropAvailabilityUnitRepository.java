@@ -13,5 +13,4 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PropAvailabilityUnitRepository extends JpaRepository<AvailabilityUnit, Integer>
 {
-
 }

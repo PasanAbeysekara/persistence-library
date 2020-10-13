@@ -20,35 +20,36 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "prop_media")
-public class PropMedia {
+public class PropMedia
+{
+	@EmbeddedId
+	private PropMediaID propMediaID;
 
-    @EmbeddedId
-    private PropMediaID propMediaID;
+	@Column(name = "media_name")
+	private String name;
 
-    @Column(name = "media_name")
-    private String name;
+	@Column(name = "category")
+	private String category;
 
-    @Column(name = "category")
-    private String category;
+	@Column(name = "path")
+	private String path;
 
-    @Column(name = "path")
-    private String path;
+	@Column(name = "type")
+	private String type;
 
-    @Column(name = "type")
-    private String type;
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
+	@ToString.Exclude
+	private Property property;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "prop_id", insertable = false, updatable = false)
-    @ToString.Exclude
-    private Property property;
+	@Transient
+	private String url;
 
-    @Transient
-    private String url;
+	public String getURL()
+	{
 
-    public String getURL(){
+		return ServletUriComponentsBuilder.fromCurrentContextPath().path( this.path + "/" ).path( this.name ).path( "." + this.type ).toUriString();
 
-        return ServletUriComponentsBuilder.fromCurrentContextPath().path( this.path + "/" ).path( this.name ).path( "."+ this.type ).toUriString();
-
-    }
+	}
 }

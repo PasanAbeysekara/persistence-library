@@ -19,22 +19,22 @@ import javax.persistence.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @ToString
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "menuChoiceID")
-public class MenuChoices {
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "menuChoiceID")
+public class MenuChoices
+{
+	@EmbeddedId
+	@EqualsAndHashCode.Include
+	private MenuChoiceID menuChoiceID;
 
-    @EmbeddedId
-    @EqualsAndHashCode.Include
-    private MenuChoiceID menuChoiceID;
-
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "cat_id", referencedColumnName = "cat_id", insertable = false, updatable = false),
-            @JoinColumn(name = "menu_id", referencedColumnName = "menu_id", insertable = false, updatable = false)
-    })
-    @ToString.Exclude
-    private MenuCategory choiceCategory;
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns({
+			@JoinColumn(name = "cat_id", referencedColumnName = "cat_id", insertable = false, updatable = false),
+			@JoinColumn(name = "menu_id", referencedColumnName = "menu_id", insertable = false, updatable = false)
+	})
+	@ToString.Exclude
+	private MenuCategory choiceCategory;
 
     /*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ToString.Exclude

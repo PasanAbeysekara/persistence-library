@@ -16,12 +16,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PropMediaID implements Serializable {
+public class PropMediaID implements Serializable
+{
+	@Column(name = "prop_id")
+	private Long propId;
 
-    @Column(name = "prop_id")
-    private Long propId;
-
-    @Column(name = "media_id")
-    private Integer mediaId;
+	@Column(name = "media_id")
+	private Integer mediaId;
 
 }
