@@ -10,19 +10,18 @@ import java.io.Serializable;
 
 /**
  * @author Tharindu Aththanayake
+ * @since 09/02/2020 00:20 A.M.
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class MenuChoiceID implements Serializable
+public class PropMediaID implements Serializable
 {
-	@Column(name = "menu_id")
-	private Long menuId;
+	@Column(name = "prop_id")
+	private Long propId;
 
-	@Column(name = "cat_id")
-	private Short categoryId;
+	@Column(name = "media_id")
+	private Integer mediaId;
 
-	@Column(name = "prop_ch_id")
-	private Integer propChoiceId;
 }

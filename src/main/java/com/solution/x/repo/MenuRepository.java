@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 /**
  * @author Tharindu Aththanayake
  */
-public interface MenuRepository extends JpaRepository<Menu, Long> {
-    @Query(value = "select nextval('{h-schema}menu_seq')", nativeQuery = true)
-    public Long getNextVal();
+public interface MenuRepository extends JpaRepository<Menu, Long>
+{
+	@Query(value = "select nextval('{h-schema}menu_seq')", nativeQuery = true)
+	public Long getNextVal();
 }

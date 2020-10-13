@@ -5,22 +5,21 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.solution.x.dao.sys.PaymentOptions;
 import com.solution.x.dao.sys.PropertySpeciality;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Where;
+import org.springframework.data.geo.Point;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -62,16 +61,17 @@ public class Property extends RepresentationModel<Property>
 	@Column(name = "description")
 	private String description;
 
-	//	@Embedded
-	//	@AttributeOverrides({
-	//			@AttributeOverride(name = "geo_location", column = @Column(name = "x")),
-	//			@AttributeOverride(name = "geo_location", column = @Column(name = "y"))
-	//	})
-	//	private Point point;
+	/*@Embedded
+	@AttributeOverrides({
+			@AttributeOverride(name = "geo_location", column = @Column(name = "x")),
+			@AttributeOverride(name = "geo_location", column = @Column(name = "y"))
+	})
+	private Point point;*/
 
 
-	//	@Column(name = "geo_location" )
-	//	private Point geo_location;
+	/*@Column(name = "geo_location", columnDefinition = "POINT")
+	// @JsonDeserialize( contentUsing = )
+	private Point geoLocation;*/
 
 	@Column(name = "current_cont_id")
 	private Integer currentContId;
@@ -161,6 +161,9 @@ public class Property extends RepresentationModel<Property>
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropChoices> choices;
+
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<PropMedia> propertyMedia;
 
 	public List<LocalTime> getTimeSlots()
 	{
