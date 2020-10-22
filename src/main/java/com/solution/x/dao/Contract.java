@@ -41,7 +41,7 @@ public class Contract extends RepresentationModel<Contract>
 	//			initialValue = 0,
 	//			allocationSize = 1
 	//	)
-	//	@GeneratedValue(generator = "contracts_gen", strategy = GenerationType.SEQUENCE)
+	//	@GeneratedValue(generator = "contracts_gen", strategy = GenerationType.SEQUENCE )
 	@Column(name = "contract_id")
 	@EqualsAndHashCode.Include
 	private Long contractId;
