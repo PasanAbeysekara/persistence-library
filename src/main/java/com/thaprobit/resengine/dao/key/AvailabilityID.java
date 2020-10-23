@@ -1,4 +1,4 @@
-package com.solution.x.dao.key;
+package com.thaprobit.resengine.dao.key;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
