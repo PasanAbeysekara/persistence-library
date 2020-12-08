@@ -16,6 +16,7 @@ import org.springframework.hateoas.RepresentationModel;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -83,6 +84,21 @@ public class Property extends RepresentationModel<Property>
 
 	@Column(name = "timeslot")
 	private Short timeSlotMinutes; // In minutes , 30 (1/2 hr), 60 (1hr) , 90 (1 1/2 hr) , 120 (2hr)
+
+	@Column(name = "avg_rating")
+	private BigDecimal avgRating; //8.5
+
+	@Column(name = "total_rating")
+	private Integer totalRating; //525
+
+	@Column(name = "amount")
+	private BigDecimal amount; //5500
+
+	@Column(name = "amount_currency")
+	private String amountCurrency; //LKR
+
+	@Column(name = "amount_condition")
+	private String amountCondition; //Approx 2 People
 
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy("time_start ASC")

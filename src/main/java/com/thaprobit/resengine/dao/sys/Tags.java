@@ -57,6 +57,9 @@ public class Tags extends RepresentationModel<Tags>
 	@Column(name = "description")
 	private String description;
 
+	@Column( name = "icon" )
+	private String icon;
+
 	@JsonBackReference // Could not write JSON: Infinite recursion (StackOverflowError)
 	@OneToMany(mappedBy = "sysTags", fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn

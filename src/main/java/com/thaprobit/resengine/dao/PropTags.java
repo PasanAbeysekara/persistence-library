@@ -44,6 +44,9 @@ public class PropTags extends RepresentationModel<PropTags>
 	@Column(name = "description")
 	private String description;
 
+	@Column(name = "order")
+	private int order;
+
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -1,6 +1,7 @@
 package com.thaprobit.resengine.repo;
 
 import com.thaprobit.resengine.dao.Menu;
+import com.thaprobit.resengine.dao.PropChoices;
 import com.thaprobit.resengine.dao.projection.PropContractAndTimeSlots;
 import com.thaprobit.resengine.dao.Property;
 import com.thaprobit.resengine.dao.sys.AvailabilityUnit;
@@ -12,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author Tharinda Wickramaarachchi
@@ -36,5 +38,10 @@ public interface PropertyRepository extends JpaRepository<Property, Long>
 			"AND LOWER( a.sysAvailabilityUnit.name ) LIKE LOWER( concat( '%', :name, '%' ))")
 	List<AvailabilityUnit> findPropertyAvailableUnits( @Param("id") Long propertyId, @Param("code") String code, @Param("name") String name );
 
+	@Query(value = "SELECT Menu FROM Property p JOIN p.menus Menu WHERE p.code =:code ")
+	Set<Menu> findPropertyMenus( @Param("code") String propCode );
+
+	@Query(value = "SELECT PropChoices FROM Property p JOIN p.choices PropChoices WHERE p.code =:code ")
+	Set<PropChoices> findPropertyChoicesByCode( @Param("code") String propCode );
 
 }

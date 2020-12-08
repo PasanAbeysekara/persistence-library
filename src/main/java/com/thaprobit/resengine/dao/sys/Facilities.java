@@ -60,6 +60,9 @@ public class Facilities extends RepresentationModel<Facilities>
 	@Column(name = "description")
 	private String description;
 
+	@Column( name = "icon" )
+	private String icon;
+
 	@JsonBackReference // Could not write JSON: Infinite recursion (StackOverflowError)
 	@OneToMany(mappedBy = "sysFacility", fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn

@@ -63,6 +63,10 @@ public class AvailabilityUnit extends RepresentationModel<AvailabilityUnit>
 	@Column(name = "max_capacity")
 	private Short maxCapacity;
 
+	@Size(max = 10)
+	@Column(name = "type")
+	private String type;
+
 	@JsonBackReference
 	@OneToMany(mappedBy = "sysAvailabilityUnit", fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
