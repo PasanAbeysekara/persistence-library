@@ -10,7 +10,9 @@ import com.thaprobit.resengine.dao.sys.PropertySpeciality;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
+import org.springframework.data.geo.Point;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
@@ -67,10 +69,18 @@ public class Property extends RepresentationModel<Property>
 	})
 	private Point point;*/
 
+	// @Column(columnDefinition="Geometry")
+	//@Type(type="org.hibernate.spatial.GeometryType")    //"org.hibernatespatial.GeometryUserType" seems to be for older versions of Hibernate Spatial
+	// private Point geoLocation;
 
 	/*@Column(name = "geo_location", columnDefinition = "POINT")
 	// @JsonDeserialize( contentUsing = )
 	private Point geoLocation;*/
+	@Column(name = "latitude")
+	private Double latitude;
+
+	@Column(name = "longitude")
+	private Double longitude;
 
 	@Column(name = "current_cont_id")
 	private Integer currentContId;

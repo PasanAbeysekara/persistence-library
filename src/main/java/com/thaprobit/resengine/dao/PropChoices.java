@@ -12,6 +12,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 /**
  * @author Tharindu Aththanayake
@@ -45,6 +46,12 @@ public class PropChoices extends RepresentationModel<PropChoices>
 	@Size(max = 2000)
 	@Column(name = "description")
 	private String description;
+
+	@Column(name = "amount")
+	private BigDecimal amount;
+
+	@Column(name = "amount_currency")
+	private String amountCurrency;
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)

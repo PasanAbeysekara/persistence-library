@@ -25,8 +25,8 @@ public class PropMedia
 	@EmbeddedId
 	private PropMediaID propMediaID;
 
-	@Column(name = "media_name")
-	private String name;
+	@Column(name = "media_file")
+	private String file;
 
 	@Column(name = "category")
 	private String category;
@@ -34,8 +34,14 @@ public class PropMedia
 	@Column(name = "path")
 	private String path;
 
-	@Column(name = "type")
+	@Column(name = "media_type")
 	private String type;
+
+	@Column(name = "media_title")
+	private String title;
+
+	@Column(name = "thumbnail")
+	private String thumbnail;
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -44,12 +50,19 @@ public class PropMedia
 	private Property property;
 
 	@Transient
-	private String url;
+	private String mediaUrl;
 
-	public String getURL()
+	/*public String getURL()
 	{
 
 		return ServletUriComponentsBuilder.fromCurrentContextPath().path( this.path + "/" ).path( this.name ).path( "." + this.type ).toUriString();
+
+	}*/
+
+	public String getMediaUrl()
+	{
+
+		return this.path + "/" + this.file;
 
 	}
 }
