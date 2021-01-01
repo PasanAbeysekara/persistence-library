@@ -189,6 +189,9 @@ public class Property extends RepresentationModel<Property>
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropMedia> propertyMedia;
 
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<PropEvent> events;
+
 	public List<LocalTime> getTimeSlots()
 	{
 

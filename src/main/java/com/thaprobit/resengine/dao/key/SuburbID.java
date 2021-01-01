@@ -10,18 +10,17 @@ import java.io.Serializable;
 
 /**
  * @author Tharindu Aththanayake
- * @since 09/02/2020 12:20 AM
+ * @since 12/29/2020 07:45 PM
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PropMediaID implements Serializable
+public class SuburbID implements Serializable
 {
-	@Column(name = "prop_id")
-	private Long propId;
+	@Column(name = "suburb_id")
+	private Short suburbId;
 
-	@Column(name = "media_id")
-	private Integer mediaId;
-
+	@Column(name = "city_id")
+	private Long cityId;
 }

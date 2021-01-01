@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 /**
  * @author Tharindu Aththanayake
- * @since 09/02/2020 00:35 A.M.
+ * @since 09/02/2020 12:35 AM
  */
 
 @Data

@@ -24,11 +24,11 @@ import java.util.Set;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "payment_options")
 @ToString
-public class PaymentOptions extends RepresentationModel<PaymentOptions>
+public class PaymentOptions
 {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)

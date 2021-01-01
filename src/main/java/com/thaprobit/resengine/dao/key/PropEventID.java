@@ -10,18 +10,17 @@ import java.io.Serializable;
 
 /**
  * @author Tharindu Aththanayake
- * @since 09/02/2020 12:20 AM
+ * @since 12/29/2020 08:29 PM
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class PropMediaID implements Serializable
+public class PropEventID implements Serializable
 {
 	@Column(name = "prop_id")
 	private Long propId;
 
-	@Column(name = "media_id")
-	private Integer mediaId;
-
+	@Column(name = "event_id")
+	private Integer eventId;
 }

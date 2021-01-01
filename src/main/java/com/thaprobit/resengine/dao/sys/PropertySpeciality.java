@@ -24,11 +24,11 @@ import java.util.Set;
  */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "property_speciality")
 @ToString
-public class PropertySpeciality extends RepresentationModel<PropertySpeciality>
+public class PropertySpeciality
 {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
