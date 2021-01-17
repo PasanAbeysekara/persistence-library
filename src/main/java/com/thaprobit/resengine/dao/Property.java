@@ -110,6 +110,15 @@ public class Property extends RepresentationModel<Property>
 	@Column(name = "amount_condition")
 	private String amountCondition; //Approx 2 People
 
+	@Column(name = "res_slot_minutes")
+	private Short reservationSlotMinutes;
+
+	@Column(name = "res_slot_length")
+	private Short reservationSlotLength;
+
+	@Column(name = "booking_note")
+	private String bookingNote;
+
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy("time_start ASC")
 	private Set<OperationHours> operationHours;

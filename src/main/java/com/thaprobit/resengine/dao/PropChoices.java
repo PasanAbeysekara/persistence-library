@@ -20,13 +20,13 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "prop_choices")
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "propChoiceId"
 )
-public class PropChoices extends RepresentationModel<PropChoices>
+public class PropChoices
 {
 	@Id
 	@EqualsAndHashCode.Include
