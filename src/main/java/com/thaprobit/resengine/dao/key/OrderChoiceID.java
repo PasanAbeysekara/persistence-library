@@ -26,4 +26,7 @@ public class OrderChoiceID implements Serializable
 
 	@Column( name = "prop_ch_id" )
 	private Integer propChoiceId;
+
+	@Column( name = "order_ch_sub_id")
+	private Short orderChoiceSubId;
 }
