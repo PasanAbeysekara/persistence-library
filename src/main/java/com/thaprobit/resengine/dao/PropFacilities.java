@@ -47,7 +47,7 @@ public class PropFacilities extends RepresentationModel<PropFacilities>
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("facility_id")
+	@MapsId("facilityId")
 	@JoinColumn(name = "facility_id")
 	@ToString.Exclude
 	private Facilities sysFacility;

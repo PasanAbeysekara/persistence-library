@@ -50,7 +50,7 @@ public class PropTags extends RepresentationModel<PropTags>
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("tag_id")
+	@MapsId("tagId")
 	@JoinColumn(name = "tag_id")
 	@ToString.Exclude
 	private Tags sysTags;

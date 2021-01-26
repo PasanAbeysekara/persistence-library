@@ -34,7 +34,7 @@ public class MenuCategory
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@MapsId("menu_id")
+	@MapsId("menuId")
 	@JoinColumn(name = "menu_id", referencedColumnName = "menu_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Menu menu;

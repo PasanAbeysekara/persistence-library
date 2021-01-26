@@ -51,7 +51,7 @@ public class Order
 	@JsonBackReference
 	@ManyToOne( fetch = FetchType.LAZY )
 	@JoinColumn( name = "reservation_id", insertable = false, updatable = false )
-	@MapsId( "reservation_id" )
+	@MapsId( "reservationId" )
 	private Reservation reservation;
 
 	@OneToMany( mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true )

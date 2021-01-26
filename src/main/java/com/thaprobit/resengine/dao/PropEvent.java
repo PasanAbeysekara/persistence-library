@@ -37,7 +37,7 @@ public class PropEvent extends RepresentationModel<PropEvent>
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("event_id")
+	@MapsId("eventId")
 	@JoinColumn(name = "event_id")
 	@ToString.Exclude
 	private Event sysEvent;

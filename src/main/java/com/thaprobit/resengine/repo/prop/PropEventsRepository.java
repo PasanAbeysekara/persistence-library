@@ -15,5 +15,5 @@ import java.util.List;
 public interface PropEventsRepository extends JpaRepository<PropEvent, PropEventID>
 {
 	@Query(value = "SELECT * FROM {h-schema}prop_events pe where pe.event_id =:eventId", nativeQuery = true)
-	List<Long> findAllProperties(  @Param("eventId") Integer eventId );
+	List<Long> findPropertiesForEvent(  @Param("eventId") Integer eventId );
 }
