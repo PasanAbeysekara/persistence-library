@@ -41,7 +41,7 @@ public class PropEventsRepositoryTest
 	@Test
 	public void findAllProperties()
 	{
-		List<Long> allProperties = eventsRepository.findAllProperties( 2 );
+		List<Long> allProperties = eventsRepository.findPropertiesForEvent( 2 );
 
 		System.out.println( allProperties );
 
