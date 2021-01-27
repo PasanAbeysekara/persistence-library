@@ -20,6 +20,9 @@ public class MenuChoiceID implements Serializable
 	@Column(name = "menu_id")
 	private Long menuId;
 
+	@Column(name = "prop_id")
+	private Long propId;
+
 	@Column(name = "cat_id")
 	private Short categoryId;
 

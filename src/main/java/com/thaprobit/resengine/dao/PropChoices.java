@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.thaprobit.resengine.dao.key.PropChoiceID;
 import com.thaprobit.resengine.dao.sys.Choices;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,13 +29,10 @@ import java.math.BigDecimal;
 )
 public class PropChoices
 {
-	@Id
-	@EqualsAndHashCode.Include
-	@Column(name = "prop_ch_id", updatable = false, nullable = false)
-	private Integer propChoiceId;
 
-	@Column(name = "prop_id", insertable = false, updatable = false)
-	private Long propId;
+	@EmbeddedId
+	@EqualsAndHashCode.Include
+	private PropChoiceID propChoiceId;
 
 	@Column(name = "choice_id", insertable = false, updatable = false)
 	private Long choiceId;

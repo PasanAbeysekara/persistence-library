@@ -59,7 +59,7 @@ public class PropAvailabilityUnit extends RepresentationModel<PropAvailabilityUn
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("propId")
-	@JoinColumn(name = "prop_id")
+	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Property properties;
 }

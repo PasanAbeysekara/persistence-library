@@ -44,7 +44,7 @@ public class PropTags extends RepresentationModel<PropTags>
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "order")
+	@Column(name = "fav_order")
 	private int order;
 
 	//@JsonManagedReference

@@ -21,6 +21,9 @@ public class OrderChoiceID implements Serializable
 	@Column( name = "reservation_id" )
 	private Long reservationId;
 
+	@Column( name = "prop_id" )
+	private Long propId;
+
 	@Column( name = "order_id" )
 	private Short orderId;
 

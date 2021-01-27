@@ -52,7 +52,7 @@ public class PropFacilities extends RepresentationModel<PropFacilities>
 	@ToString.Exclude
 	private Facilities sysFacility;
 
-	@Column(name = "order")
+	@Column(name = "fav_order")
 	private int order;
 
 	@ManyToOne(fetch = FetchType.LAZY)
