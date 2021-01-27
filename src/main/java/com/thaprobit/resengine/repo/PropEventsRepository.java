@@ -1,4 +1,4 @@
-package com.thaprobit.resengine.repo.prop;
+package com.thaprobit.resengine.repo;
 
 import com.thaprobit.resengine.dao.PropEvent;
 import com.thaprobit.resengine.dao.key.PropEventID;
