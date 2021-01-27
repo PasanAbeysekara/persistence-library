@@ -1,6 +1,7 @@
 package com.thaprobit.resengine.repo.prop;
 
 import com.thaprobit.resengine.dao.PropEvent;
+import com.thaprobit.resengine.repo.PropEventsRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
