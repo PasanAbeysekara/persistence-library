@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.time.LocalTime;
@@ -42,6 +43,7 @@ public class OperationHours
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
+	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Property properties;

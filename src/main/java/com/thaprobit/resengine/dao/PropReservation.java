@@ -3,8 +3,7 @@ package com.thaprobit.resengine.dao;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.thaprobit.resengine.dao.key.PropTagID;
-import com.thaprobit.resengine.dao.sys.Tags;
+import com.thaprobit.resengine.dao.key.PropReservationID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -18,46 +17,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
- * @author Tharinda Wickramaarachchi
+ * @author Tharindu Aththanayake
+ * @since 01/28/2021 01:33 AM
  */
 @Data
 @Entity
-@Table(name = "prop_tags")
+@Table(name = "prop_reservations")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "propTagID")
+		property = "propReservationId")
 @ToString
-public class PropTags extends RepresentationModel<PropTags>
+public class PropReservation extends RepresentationModel<PropReservation>
 {
 	@EmbeddedId
 	@EqualsAndHashCode.Include
-	private PropTagID propTagID;
+	private PropReservationID propReservationId;
 
-	@Size(max = 100)
-	@Column(name = "name")
-	private String name;
+	@Column( name = "booked_contract_id" )
+	private Integer bookedContractId;
 
-	@Column(name = "description")
-	private String description;
-
-	@Column(name = "fav_order")
-	private int order;
-
-	//@JsonManagedReference
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("tagId")
-	@JoinColumn(name = "tag_id")
+	@MapsId("reservationId")
+	@JoinColumn(name = "res_id")
 	@ToString.Exclude
-	private Tags sysTags;
+	private Reservation reservation;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
-	private Property properties;
+	private Property property;
 }

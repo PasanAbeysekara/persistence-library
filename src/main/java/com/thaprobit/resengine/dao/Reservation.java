@@ -1,5 +1,6 @@
 package com.thaprobit.resengine.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
@@ -15,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -79,4 +81,9 @@ public class Reservation
 
 	@OneToMany( fetch = FetchType.LAZY, mappedBy = "reservation", cascade = CascadeType.ALL )
 	private Set<Order> orders;
+
+	@JsonBackReference
+	@OneToMany(mappedBy = "reservation", fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+	private Set<PropReservation> propReservations;
 }

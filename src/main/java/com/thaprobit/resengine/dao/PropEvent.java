@@ -43,7 +43,7 @@ public class PropEvent extends RepresentationModel<PropEvent>
 	private Event sysEvent;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	//@MapsId("prop_id")
+	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Property property;

@@ -62,9 +62,4 @@ public class OrderChoices
 			}
 	)
 	private Order order;
-
-	/*@ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL )
-	@JoinColumn( name = "prop_ch_id", referencedColumnName = "prop_ch_id", insertable = false, updatable = false)
-	@MapsId("prop_ch_id")
-	private PropChoices propChoices;*/
 }

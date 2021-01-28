@@ -201,6 +201,9 @@ public class Property extends RepresentationModel<Property>
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropEvent> events;
 
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<PropReservation> reservations;
+
 	public List<LocalTime> getTimeSlots()
 	{
 

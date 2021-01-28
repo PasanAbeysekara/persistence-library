@@ -56,7 +56,7 @@ public class PropFacilities extends RepresentationModel<PropFacilities>
 	private int order;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	//@MapsId("propId")
+	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false) // attempted to assign id from null one-to-one property , remove @MapsId("propId")
 	@ToString.Exclude
 	private Property properties;

@@ -53,6 +53,7 @@ public class PropChoices
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
+	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Property property;
