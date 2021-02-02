@@ -60,7 +60,8 @@ public class PropChoices
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "choice_id")
+	@MapsId("propChoiceId")
+	@JoinColumn(name = "prop_ch_id")
 	@ToString.Exclude
 	private Choices sysChoice;
 
