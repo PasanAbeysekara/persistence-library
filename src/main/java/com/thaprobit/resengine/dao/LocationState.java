@@ -47,7 +47,7 @@ public class LocationState
 
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("countryId")
 	@JoinColumn(name = "country_id")
 	private LocationCountry country;

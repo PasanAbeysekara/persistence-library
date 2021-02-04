@@ -61,7 +61,7 @@ public class LocationBased
 
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumns(
 			{
 					@JoinColumn(name = "country_id", referencedColumnName = "country_id", updatable = false, insertable = false),
