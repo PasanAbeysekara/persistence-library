@@ -9,9 +9,15 @@ import com.thaprobit.resengine.dao.sys.Choices;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
@@ -34,9 +40,6 @@ public class PropChoices
 	@EqualsAndHashCode.Include
 	private PropChoiceID propChoiceId;
 
-	@Column(name = "choice_id", insertable = false, updatable = false)
-	private Long choiceId;
-
 	@Size(max = 100)
 	@Column(name = "name")
 	private String name;
@@ -53,13 +56,13 @@ public class PropChoices
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("propId")
 	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
 	@ToString.Exclude
 	private Property property;
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
+	@MapsId("choiceId")
 	@JoinColumn(name = "choice_id")
 	@ToString.Exclude
 	private Choices sysChoice;

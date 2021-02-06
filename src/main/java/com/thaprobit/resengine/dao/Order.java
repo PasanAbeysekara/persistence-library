@@ -7,7 +7,6 @@ import com.thaprobit.resengine.dao.key.OrderID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -51,7 +49,6 @@ public class Order
 	@JsonBackReference
 	@ManyToOne( fetch = FetchType.LAZY )
 	@JoinColumn( name = "reservation_id", insertable = false, updatable = false )
-	@MapsId( "reservationId" )
 	private Reservation reservation;
 
 	@OneToMany( mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true )

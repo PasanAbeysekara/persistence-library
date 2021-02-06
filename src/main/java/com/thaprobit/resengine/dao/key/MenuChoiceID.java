@@ -26,6 +26,6 @@ public class MenuChoiceID implements Serializable
 	@Column(name = "cat_id")
 	private Short categoryId;
 
-	@Column(name = "prop_ch_id")
-	private Integer propChoiceId;
+	@Column(name = "choice_id")
+	private Integer choiceId;
 }

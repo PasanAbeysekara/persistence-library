@@ -8,7 +8,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -32,7 +41,7 @@ public class Choices extends RepresentationModel<Choices>
 	)
 	@GeneratedValue(generator = "choices_gen", strategy = GenerationType.SEQUENCE)
 	@Column(name = "choice_id", updatable = false, nullable = false)
-	private Long choiceId;
+	private Integer choiceId;
 
 	@Size(max = 100)
 	@Column(name = "name")

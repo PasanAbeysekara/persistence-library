@@ -6,18 +6,16 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -42,6 +40,16 @@ public class Reservation
 	@EqualsAndHashCode.Include
 	@Column(name = "reservation_id")
 	private Long reservationId;
+
+	@Column(name = "prop_id")
+	private Long propId;
+
+	@Column(name = "unit_id")
+	private Integer availableUnitId;
+
+	@Size(max = 10)
+	@Column(name = "unit_type")
+	private String availableUnitType;
 
 	@Column(name = "date")
 	private LocalDate date;
@@ -82,8 +90,19 @@ public class Reservation
 	@OneToMany( fetch = FetchType.LAZY, mappedBy = "reservation", cascade = CascadeType.ALL )
 	private Set<Order> orders;
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "reservation", fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-	private Set<PropReservation> propReservations;
+	@JsonBackReference(value = "property")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prop_id", insertable = false, updatable = false)
+	@ToString.Exclude
+	private Property property;
+
+	@JsonBackReference(value = "propAvailabilityUnit")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns({
+			@JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
+			@JoinColumn(name = "unit_id", referencedColumnName = "unit_id", insertable = false, updatable = false)
+	})
+	@ToString.Exclude
+	private PropAvailabilityUnit propAvailabilityUnit;
+
 }

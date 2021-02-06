@@ -17,8 +17,8 @@ import java.io.Serializable;
 @Embeddable
 public class PropChoiceID implements Serializable
 {
-	@Column(name = "prop_ch_id")
-	private Integer propChoiceId;
+	@Column(name = "choice_id")
+	private Integer choiceId;
 
 	@Column(name = "prop_id")
 	private Long propId;

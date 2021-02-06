@@ -2,8 +2,8 @@ package com.thaprobit.resengine.repo;
 
 import com.thaprobit.resengine.dao.Menu;
 import com.thaprobit.resengine.dao.PropChoices;
-import com.thaprobit.resengine.dao.projection.PropContractAndTimeSlots;
 import com.thaprobit.resengine.dao.Property;
+import com.thaprobit.resengine.dao.projection.PropContractAndTimeSlots;
 import com.thaprobit.resengine.dao.sys.AvailabilityUnit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
