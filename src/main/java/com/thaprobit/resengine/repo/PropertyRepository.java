@@ -22,6 +22,9 @@ public interface PropertyRepository extends JpaRepository<Property, Long>
 {
 	List<Property> findByCode( @Param("code") String code );
 
+	@Query(value = "SELECT propId FROM Property")
+	List<Long> findAllPropId();
+
 	@Query(value = "SELECT count(p) FROM Property p where p.currentContId =:id")
 	Integer findPropWithSameContract( @Param("id") Integer currentContId );
 

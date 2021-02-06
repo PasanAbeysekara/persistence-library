@@ -15,6 +15,6 @@ public interface PropFacilitiesRepository extends JpaRepository<PropFacilities, 
 {
 	List<PropFacilities> findByPropFacilityIdPropId( @Param("propId") int propId );
 
-	@Query(value = "SELECT * FROM {h-schema}prop_facilities where facility_id =:facilityId", nativeQuery = true)
+	@Query(value = "SELECT prop_id FROM {h-schema}prop_facilities where facility_id =:facilityId", nativeQuery = true)
 	List<Long> findPropertiesForFacility(  @Param("facilityId") Integer facilityId );
 }

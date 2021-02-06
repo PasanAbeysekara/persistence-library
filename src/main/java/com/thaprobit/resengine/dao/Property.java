@@ -140,7 +140,7 @@ public class Property extends RepresentationModel<Property>
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY)
 	private Set<PropAvailabilityUnit> availabilityUnits;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JoinColumn(name = "based_location_id")
 	@ToString.Exclude
