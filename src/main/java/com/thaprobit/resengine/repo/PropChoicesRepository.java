@@ -12,10 +12,7 @@ import java.util.List;
  */
 public interface PropChoicesRepository extends JpaRepository<PropChoices, Integer>
 {
-	@Query(value = "SELECT coalesce( max( prop_ch_id ) , 0) AS current_prop_choice_id FROM {h-schema}prop_choices", nativeQuery = true)
-	Integer currentPropChoiceId();
-
-	@Query(value = "SELECT prop_id FROM {h-schema}prop_choices where prop_ch_id =:choiceId", nativeQuery = true)
+	@Query(value = "SELECT prop_id FROM {h-schema}prop_choices where choice_id =:choiceId", nativeQuery = true)
 	List<Long> findPropertiesForChoice( @Param("choiceId") Integer choiceId );
 
 }
