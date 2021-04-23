@@ -20,24 +20,24 @@
         <repository>
             <id>central</id>
             <name>Release Repo</name>
-            <url>https://thaprobit.jfrog.io/artifactory/hangouts-repo</url>
+            <url>https://zeylonbrains.jfrog.io/artifactory/zb-repo</url>
         </repository>
         <repository>
             <id>snapshots</id>
             <name>Snapshot Repo</name>
-            <url>https://thaprobit.jfrog.io/artifactory/hangouts-snapshot-repo</url>
+            <url>https://zeylonbrains.jfrog.io/artifactory/zb-repo</url>
         </repository>
     </repositories>
     <distributionManagement>
         <repository>
             <id>central</id>
             <name>Release Repo</name>
-            <url>https://thaprobit.jfrog.io/artifactory/hangouts-repo</url>
+            <url>https://zeylonbrains.jfrog.io/artifactory/zb-repo</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>Snapshot Repo</name>
-            <url>https://thaprobit.jfrog.io/artifactory/hangouts-snapshot-repo</url>
+            <url>https://zeylonbrains.jfrog.io/artifactory/zb-repo</url>
         </snapshotRepository>
     </distributionManagement>
 
