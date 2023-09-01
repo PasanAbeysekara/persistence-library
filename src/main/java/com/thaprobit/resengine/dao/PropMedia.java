@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author Tharindu Aththanayake

@@ -1,6 +1,6 @@
 package com.thaprobit.resengine.dao.global;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 
 /**

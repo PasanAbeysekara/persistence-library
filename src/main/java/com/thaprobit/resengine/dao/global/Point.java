@@ -1,6 +1,6 @@
 package com.thaprobit.resengine.dao.global;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 import java.math.BigDecimal;
 
 /**

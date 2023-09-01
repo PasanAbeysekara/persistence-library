@@ -6,11 +6,11 @@ import com.thaprobit.resengine.dao.key.SuburbID;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author Tharindu Aththanayake
