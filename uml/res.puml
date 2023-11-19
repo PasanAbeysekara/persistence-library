@@ -1,0 +1,22 @@
+@startuml
+class com.thaprobit.resengine.dao.Reservation {
+- Long reservationId
+- Long propId
+- Integer availableUnitId
+- String availableUnitType
+- LocalDate date
+- LocalTime time
+- Short timeSlots
+- String status
+- Long hostUser
+- Short headCount
+- String specialRequest
+- Short slotLength
+- Short slotMinutes
+- String option1
+- String option2
+- Set<Order> orders
+- Property property
+- PropAvailabilityUnit propAvailabilityUnit
+}
+@enduml

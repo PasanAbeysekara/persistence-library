@@ -1,0 +1,462 @@
+@startuml
+class com.thaprobit.resengine.dao.key.PropTagID {
+- Long propId
+- Integer tagId
+}
+class com.thaprobit.resengine.dao.WidenPropData {
+- WidenDataGridKey widenDataGridKey
+- Short contractAvailCount
+- Short open
+- Short close
+- Short bookable
+- Short hold
+- Short booked
+- Long reservationId
+- Long contractId
++ void calculateBookable()
+}
+class com.thaprobit.resengine.dao.key.PropMenuID {
+- Long propId
+- Long menuId
+}
+class com.thaprobit.resengine.dao.ContractAvailability {
+- AvailabilityID availabilityID
+- Short count
+- Seasons seasons
+}
+class com.thaprobit.resengine.dao.PropFacilities {
+- PropFacilityID propFacilityId
+- String name
+- String description
+- Facilities sysFacility
+- int order
+- Property properties
+}
+class com.thaprobit.resengine.dao.key.OrderChoiceID {
+- Long reservationId
+- Long propId
+- Short orderId
+- Integer choiceId
+- Short orderChoiceSubId
+}
+class com.thaprobit.resengine.dao.sys.Facilities {
+- Integer facilityId
+- String code
+- String name
+- String description
+- String icon
+- Set<PropFacilities> propFacilities
+}
+class com.thaprobit.resengine.dao.key.SeasonID {
+- Long contractId
+- Short seasonId
+}
+class com.thaprobit.resengine.dao.key.WidenDataGridKey {
+- Long propId
+- Integer availUnitId
+- LocalDate date
+- LocalTime timeSlot
+}
+class com.thaprobit.resengine.dao.PromotionTier {
+- Short tierId
+- String name
+- String description
+- Set<Promotion> promotions
+}
+class com.thaprobit.resengine.dao.key.PropFacilityID {
+- Long propId
+- Integer facilityId
+}
+class com.thaprobit.resengine.dao.key.ContractID {
+- long contractId
+- Short version
+}
+class com.thaprobit.resengine.dao.OperationHours {
+- OperationHourKey operationHourKey
+- LocalTime timeStart
+- LocalTime timeEnd
+- String name
+- Property properties
+}
+class com.thaprobit.resengine.dao.sys.Tags {
+- int tagId
+- String code
+- String name
+- String description
+- String icon
+- Set<PropTags> propTags
+}
+class com.thaprobit.resengine.dao.LocationSuburb {
+- SuburbID suburbID
+- String name
+}
+class com.thaprobit.resengine.dao.Organization {
+- long orgId
+- String code
+- String name
+- Set<Property> properties
+}
+class com.thaprobit.resengine.dao.key.StateID {
+- Short countryId
+- Short stateId
+}
+class com.thaprobit.resengine.dao.key.MenuCategoryID {
+- Long menuId
+- Short categoryId
+}
+class com.thaprobit.resengine.dao.sys.Choices {
+- Integer choiceId
+- String name
+- String description
+- Set<PropChoices> propChoices
+}
+class com.thaprobit.resengine.dao.OrderChoices {
+- OrderChoiceID orderChoiceId
+- Short quantity
+- BigDecimal subAmount
+- String amountCurrency
+- String size
+- Order order
+}
+interface com.thaprobit.resengine.dao.projection.PropContractAndTimeSlots {
+~ Integer getCurrentContId()
+~ List<LocalTime> getTimeSlots()
+}
+class com.thaprobit.resengine.dao.sys.PaymentOptions {
+- Short optionId
+- String name
+- Set<Property> properties
+}
+class com.thaprobit.resengine.dao.global.Point {
+- BigDecimal x
+- BigDecimal y
+}
+class com.thaprobit.resengine.dao.sys.WeekDefinition {
+- Short weekDefId
+- String code
+- String name
+- String week
+- Boolean[] weekDays
++ Boolean[] getWeekDays()
++ boolean isValidDay(DayOfWeek)
+}
+class com.thaprobit.resengine.dao.MenuChoices {
+- MenuChoiceID menuChoiceID
+- MenuCategory choiceCategory
+}
+class com.thaprobit.resengine.dao.sys.AvailabilityUnit {
+- Integer unitId
+- String code
+- String name
+- Short minCapacity
+- Short maxCapacity
+- String type
+- Set<PropAvailabilityUnit> propAvailabilityUnits
+}
+class com.thaprobit.resengine.dao.key.AvailabilityID {
+- Long contractId
+- Integer availUnitId
+- Short seasonId
+- Short weekDefId
+}
+class com.thaprobit.resengine.dao.ContactDetails {
+- Long contactId
+- String type
+- String name
+- String email
+- String web
+- String phonePrimary
+- String phoneSecondary
+- String address1
+- String address2
+- String address3
+- String zip
+- Property property
+}
+class com.thaprobit.resengine.dao.LocationState {
+- StateID stateId
+- String name
+- Set<LocationBased> basedLocation
+- LocationCountry country
+}
+class com.thaprobit.resengine.dao.Reservation {
+- Long reservationId
+- Long propId
+- Integer availableUnitId
+- String availableUnitType
+- LocalDate date
+- LocalTime time
+- Short timeSlots
+- String status
+- Long hostUser
+- Short headCount
+- String specialRequest
+- Short slotLength
+- Short slotMinutes
+- String option1
+- String option2
+- Set<Order> orders
+- Property property
+- PropAvailabilityUnit propAvailabilityUnit
+}
+class com.thaprobit.resengine.dao.key.PropAvailabilityUnitKey {
+- Long propId
+- Integer unit_id
+}
+class com.thaprobit.resengine.dao.key.OperationHourKey {
+- Long propId
+- Short opId
+}
+class com.thaprobit.resengine.dao.FeaturedLocation {
+- Long featuredLocationId
+- String name
+- String description
+- LocationState state
+- LocationBased city
+- LocationSuburb suburb
+}
+class com.thaprobit.resengine.dao.Promotion {
+- PromoID promoId
+- String name
+- String description
+- Short tierId
+- Short promoTypeId
+- Date start
+- Date end
+- Boolean live
+- Boolean maxedOutLanding
+- Boolean maxedOutSearch
+- PromotionStatistics statistics
+- PromotionTier tier
+- Property properties
+}
+class com.thaprobit.resengine.dao.key.PropEventID {
+- Long propId
+- Integer eventId
+}
+class com.thaprobit.resengine.dao.global.CommonData {
+- LocalDateTime createdDateTime
+- LocalDateTime modifiedDateTime
+}
+class com.thaprobit.resengine.dao.MenuCategory {
+- MenuCategoryID menuCategoryId
+- String name
+- Menu menu
+- Set<MenuChoices> categoryChoices
+}
+class com.thaprobit.resengine.dao.PropEvent {
+- PropEventID propEventID
+- Event sysEvent
+- Property property
+}
+class com.thaprobit.resengine.dao.Order {
+- OrderID orderId
+- BigDecimal totalAmount
+- String amountCurrency
+- Reservation reservation
+- Set<OrderChoices> orderChoices
+}
+class com.thaprobit.resengine.dao.Seasons {
+- SeasonID seasonId
+- String name
+- LocalDate from
+- LocalDate to
+- Contract contract
+- Set<ContractAvailability> availabilities
+}
+class com.thaprobit.resengine.dao.LocationBased {
+- Long locationId
+- String name
+- LocationState state
+- Set<Property> properties
+}
+class com.thaprobit.resengine.dao.PropTags {
+- PropTagID propTagID
+- String name
+- String description
+- int order
+- Tags sysTags
+- Property properties
+}
+class com.thaprobit.resengine.dao.Contract {
+- Long contractId
+- Short version
+- Long propId
+- String name
+- Date validFrom
+- Date validTo
+- String versionTxt
+- Short bookableHorizon
+- Set<Seasons> seasons
+}
+class com.thaprobit.resengine.dao.key.PropMediaID {
+- Long propId
+- Integer mediaId
+}
+class com.thaprobit.resengine.dao.sys.Event {
+- Integer eventId
+- String name
+- String description
+- short order
+- Set<PropEvent> propEvents
+}
+class com.thaprobit.resengine.dao.PropChoices {
+- PropChoiceID propChoiceId
+- String name
+- String description
+- BigDecimal amount
+- String amountCurrency
+- Property property
+- Choices sysChoice
+}
+class com.thaprobit.resengine.dao.UserReview {
+- BigDecimal starRating
+- String reviewTitle
+- String comment
+- Boolean accepted
+- Integer upVotes
+- Integer downVotes
+}
+class com.thaprobit.resengine.dao.key.PromoID {
+- Long propId
+- Short promoId
+}
+class com.thaprobit.resengine.dao.key.OrderID {
+- Long reservationId
+- Short orderId
+}
+class com.thaprobit.resengine.dao.LocationCountry {
+- Short countryId
+- String name
+- Set<LocationState> states
+}
+class com.thaprobit.resengine.dao.Menu {
+- Long menuId
+- String name
+- String description
+- Set<Property> properties
+- Set<MenuCategory> menuCategories
+}
+class com.thaprobit.resengine.dao.PropMedia {
+- PropMediaID propMediaID
+- String file
+- String category
+- String path
+- String type
+- String title
+- String thumbnail
+- Property property
+- String mediaUrl
++ String getMediaUrl()
+}
+class com.thaprobit.resengine.dao.key.SuburbID {
+- Short suburbId
+- Long cityId
+}
+class com.thaprobit.resengine.dao.PromotionStatistics {
+- PromoID promoId
+- Integer views
+- Integer clicks
+- Integer authenticViews
+- Integer authenticClicks
+- Integer converge
+- Promotion promotion
+}
+class com.thaprobit.resengine.dao.key.PropChoiceID {
+- Integer choiceId
+- Long propId
+}
+class com.thaprobit.resengine.dao.Property {
+- long propId
+- String code
+- String name
+- String description
+- Double latitude
+- Double longitude
+- Integer currentContId
+- LocalTime startTime
+- LocalTime endTime
+- Short timeSlotMinutes
+- BigDecimal avgRating
+- Integer totalRating
+- BigDecimal amount
+- String amountCurrency
+- String amountCondition
+- Short reservationSlotMinutes
+- Short reservationSlotLength
+- String bookingNote
+- Set<OperationHours> operationHours
+- Set<PropAvailabilityUnit> availabilityUnits
+- LocationBased basedLocation
+- Set<PropFacilities> facilities
+- Set<PropTags> tags
+- ContactDetails contactDetails
+- Set<PropertySpeciality> propertySpecialities
+- Set<PaymentOptions> paymentOptions
+- Set<Promotion> livePromotions
+- Organization organizations
+- List<LocalTime> timeSlots
+- Set<Menu> menus
+- Set<PropChoices> choices
+- Set<PropMedia> propertyMedia
+- Set<PropEvent> events
+- Set<Reservation> reservations
++ List<LocalTime> getTimeSlots()
+}
+class com.thaprobit.resengine.dao.key.MenuChoiceID {
+- Long menuId
+- Long propId
+- Short categoryId
+- Integer choiceId
+}
+class com.thaprobit.resengine.dao.sys.PropertySpeciality {
+- Short specialityId
+- String name
+- String description
+- Set<Property> properties
+}
+class com.thaprobit.resengine.dao.PropAvailabilityUnit {
+- PropAvailabilityUnitKey propAvailabilityUnitId
+- String name
+- String description
+- Short capacity
+- AvailabilityUnit sysAvailabilityUnit
+- Property properties
+}
+
+
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropTagID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropMenuID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.PropFacilities
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.OrderChoiceID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.sys.Facilities
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.SeasonID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.WidenDataGridKey
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropFacilityID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.ContractID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.sys.Tags
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.Organization
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.StateID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.MenuCategoryID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.sys.Choices
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.sys.AvailabilityUnit
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.AvailabilityID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropAvailabilityUnitKey
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.OperationHourKey
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.Promotion
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropEventID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.PropEvent
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.PropTags
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.Contract
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropMediaID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.sys.Event
+com.thaprobit.resengine.dao.global.CommonData <|-- com.thaprobit.resengine.dao.UserReview
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PromoID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.OrderID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.Menu
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.SuburbID
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.PropChoiceID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.Property
+java.io.Serializable <|.. com.thaprobit.resengine.dao.key.MenuChoiceID
+org.springframework.hateoas.RepresentationModel <|-- com.thaprobit.resengine.dao.PropAvailabilityUnit
+@enduml
