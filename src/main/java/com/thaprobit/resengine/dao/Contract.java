@@ -76,11 +76,12 @@ public class Contract extends RepresentationModel<Contract>
 
 	//region Reverse FK mappings
 
-	@JsonBackReference
-	@ToString.Exclude
-	@OneToOne(mappedBy = "currentContract", fetch = FetchType.LAZY)
-	@JoinColumn(name = "prop_id")
-	private Property property;
+	// Remove availability contract temporarily
+//	@JsonBackReference
+//	@ToString.Exclude
+//	@OneToOne(mappedBy = "currentContract", fetch = FetchType.LAZY)
+//	@JoinColumn(name = "prop_id")
+//	private Property property;
 
 	//endregion
 

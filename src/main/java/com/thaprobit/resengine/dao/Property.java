@@ -146,11 +146,12 @@ public class Property extends RepresentationModel<Property>
 	@ToString.Exclude
 	private LocationBased basedLocation;
 
-	@ToString.Exclude
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "current_cont_id", referencedColumnName = "contract_id", insertable = false, updatable = false)
-	private Contract currentContract;
+	// Remove availability contract temporarily
+//	@ToString.Exclude
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "current_cont_id", referencedColumnName = "contract_id", insertable = false, updatable = false)
+//	private Contract currentContract;
 
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<PropFacilities> facilities;
