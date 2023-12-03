@@ -51,7 +51,7 @@ public class PropAvailabilityUnit extends RepresentationModel<PropAvailabilityUn
 	//@JsonManagedReference
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("unitId")
+	@MapsId("unit_id")
 	@JoinColumn(name = "unit_id")
 	@ToString.Exclude
 	private AvailabilityUnit sysAvailabilityUnit;
