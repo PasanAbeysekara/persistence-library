@@ -26,7 +26,7 @@ public class WeekDefinition
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "week_def_id", updatable = false, nullable = false)
-	private Short weekDefId;
+	private Long weekDefId;
 
 	@NotBlank
 	@Size(max = 10)

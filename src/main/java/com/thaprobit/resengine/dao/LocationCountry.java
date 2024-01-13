@@ -34,7 +34,7 @@ public class LocationCountry
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "country_id", updatable = false, nullable = false)
-	private Short countryId;
+	private Long countryId;
 
 	@Size(max = 50)
 	@Column(name = "name")
