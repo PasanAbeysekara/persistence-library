@@ -52,8 +52,8 @@ public class Event extends RepresentationModel<Event>
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "order")
-	private short order;
+	@Column(name = "event_order")
+	private short eventOrder;
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "sysEvent", fetch = FetchType.LAZY)

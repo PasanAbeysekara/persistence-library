@@ -3,20 +3,12 @@ package com.thaprobit.resengine.dao;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.sql.Date;
 import java.util.Set;
@@ -35,13 +27,13 @@ import java.util.Set;
 public class Contract extends RepresentationModel<Contract>
 {
 	@Id
-	//	@SequenceGenerator(
-	//			name = "contracts_gen",
-	//			sequenceName = "contract_seq",
-	//			initialValue = 0,
-	//			allocationSize = 1
-	//	)
-	//	@GeneratedValue(generator = "contracts_gen", strategy = GenerationType.SEQUENCE )
+	@SequenceGenerator(
+			name = "contracts_gen",
+			sequenceName = "contract_seq",
+			initialValue = 0,
+			allocationSize = 1
+	)
+	@GeneratedValue(generator = "contracts_gen", strategy = GenerationType.SEQUENCE )
 	@Column(name = "contract_id")
 	@EqualsAndHashCode.Include
 	private Long contractId;

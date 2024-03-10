@@ -2,18 +2,11 @@ package com.thaprobit.resengine.dao.sys;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.thaprobit.resengine.dao.Property;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.util.Set;
 
@@ -30,9 +23,9 @@ import java.util.Set;
 public class PaymentOptions
 {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "option_id", updatable = false, nullable = false)
-	private Short optionId;
+	private Integer optionId;
 
 	@Size(max = 20)
 	@Column(name = "name")

@@ -3,20 +3,12 @@ package com.thaprobit.resengine.dao;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.util.Set;
 
@@ -36,13 +28,13 @@ public class Menu extends RepresentationModel<Menu>
 {
 
 	@Id
-    /*@SequenceGenerator(
+    @SequenceGenerator(
             name = "menu_gen",
             sequenceName = "menu_seq",
             initialValue = 0,
             allocationSize = 1
     )
-    @GeneratedValue(generator = "menu_gen", strategy = GenerationType.SEQUENCE)*/
+    @GeneratedValue(generator = "menu_gen", strategy = GenerationType.SEQUENCE)
 	@Column(name = "menu_id", updatable = false, nullable = false)
 	@EqualsAndHashCode.Include
 	private Long menuId;
