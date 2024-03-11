@@ -49,6 +49,9 @@ public class Promotion extends RepresentationModel<Promotion>
 	@Column(name = "description")
 	private String description;
 
+	@Column(name = "prop_id",insertable=false, updatable=false)
+	private Short propId;
+
 	@Column(name = "tier_id")
 	private Short tierId;
 

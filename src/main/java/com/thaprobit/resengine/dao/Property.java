@@ -7,25 +7,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.thaprobit.resengine.dao.sys.PaymentOptions;
 import com.thaprobit.resengine.dao.sys.PropertySpeciality;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Where;
 import org.springframework.hateoas.RepresentationModel;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.OrderBy;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -50,13 +38,13 @@ import java.util.stream.Collectors;
 public class Property extends RepresentationModel<Property>
 {
 	@Id
-	//	@SequenceGenerator(
-	//			name = "prop_gen",
-	//			sequenceName = "property_prop_id_seq",
-	//			initialValue = 0,
-	//			allocationSize = 1
-	//	)
-	//	@GeneratedValue(generator = "prop_gen", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(
+			name = "prop_gen",
+			sequenceName = "property_prop_id_seq",
+			initialValue = 0,
+			allocationSize = 1
+	)
+	@GeneratedValue(generator = "prop_gen", strategy = GenerationType.SEQUENCE)
 	@EqualsAndHashCode.Include //Lombok HashCode issues , Need to explicitly add include with onlyExplicitlyIncluded = true
 	@Column(name = "prop_id")
 	private long propId;
@@ -132,8 +120,15 @@ public class Property extends RepresentationModel<Property>
 	@Column(name = "booking_note")
 	private String bookingNote;
 
+	@Column(name = "based_location_id",insertable=false, updatable=false)
+	private Long basedLocationId;
+
+	@Column(name = "contact_id",insertable=false, updatable=false)
+	private Long contactId;
+
+
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@OrderBy("time_start ASC")
+//	@OrderBy("time_start ASC")
 	private Set<OperationHours> operationHours;
 
 	@ToString.Exclude
