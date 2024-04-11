@@ -1,4 +1,4 @@
-image: maven:3.6.3
+image: maven:3.8.4-jdk-11
 
 pipelines:
   default:
@@ -8,8 +8,6 @@ pipelines:
             caches:
               - maven
             script:
-              # Install Maven
-              - apt-get update && apt-get install -y maven
               # Build and test
               - mvn -B verify --file pom.xml
             after-script:
