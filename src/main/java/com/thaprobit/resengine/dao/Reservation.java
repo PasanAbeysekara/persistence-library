@@ -43,6 +43,9 @@ public class Reservation
 	@Column(name = "unit_type")
 	private String availableUnitType;
 
+	@Column(name = "reserve_code")
+	private String reserveCode;
+
 	@Column(name = "date")
 	private LocalDate date;
 
