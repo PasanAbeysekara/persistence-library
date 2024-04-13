@@ -3,6 +3,7 @@ package com.thaprobit.resengine.dao;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -30,6 +31,9 @@ public class User {
 
     @Column(name = "birthday")
     private Date birthday;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Reservation> reservations;
 
     public User() {
 
@@ -100,6 +104,14 @@ public class User {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
 }

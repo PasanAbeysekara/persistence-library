@@ -79,6 +79,15 @@ public class Reservation
 	@Column(name = "option2")
 	private String option2;
 
+	@Column(name = "user_id")
+	private Long userId;
+
+	@JsonBackReference(value = "user")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	@ToString.Exclude
+	private User user;
+
 	@OneToMany( fetch = FetchType.LAZY, mappedBy = "reservation", cascade = CascadeType.ALL )
 	private Set<Order> orders;
 
