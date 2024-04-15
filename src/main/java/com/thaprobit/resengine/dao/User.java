@@ -42,12 +42,21 @@ public class User {
 
     @Column(name = "facebook_id")
     private String facebookId;
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reservation> reservations;
+
     public User() {
 
     }
 
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
 }

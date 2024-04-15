@@ -28,7 +28,8 @@ import java.util.Set;
 public class Reservation
 {
 	@Id
-	@EqualsAndHashCode.Include
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_id_seq")
+	@SequenceGenerator(name = "reservation_id_seq", sequenceName = "reservation_id_seq", allocationSize = 1)
 	@Column(name = "reservation_id")
 	private Long reservationId;
 
@@ -41,6 +42,9 @@ public class Reservation
 	@Size(max = 10)
 	@Column(name = "unit_type")
 	private String availableUnitType;
+
+	@Column(name = "reserve_code")
+	private String reserveCode;
 
 	@Column(name = "date")
 	private LocalDate date;
@@ -78,6 +82,15 @@ public class Reservation
 	@Column(name = "option2")
 	private String option2;
 
+	@Column(name = "user_id")
+	private Long userId;
+
+	@JsonBackReference(value = "user")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	@ToString.Exclude
+	private User user;
+
 	@OneToMany( fetch = FetchType.LAZY, mappedBy = "reservation", cascade = CascadeType.ALL )
 	private Set<Order> orders;
 
@@ -95,13 +108,5 @@ public class Reservation
 	})
 	@ToString.Exclude
 	private PropAvailabilityUnit propAvailabilityUnit;
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name = "user_reservation",
-			joinColumns = @JoinColumn(name = "reservation_id"),
-			inverseJoinColumns = @JoinColumn(name = "user_id")
-	)
-	private Set<User> users;
 
 }
