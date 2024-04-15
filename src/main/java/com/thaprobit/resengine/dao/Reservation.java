@@ -3,20 +3,11 @@ package com.thaprobit.resengine.dao;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -104,5 +95,13 @@ public class Reservation
 	})
 	@ToString.Exclude
 	private PropAvailabilityUnit propAvailabilityUnit;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "user_reservation",
+			joinColumns = @JoinColumn(name = "reservation_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id")
+	)
+	private Set<User> users;
 
 }
