@@ -60,7 +60,7 @@ public class Property extends RepresentationModel<Property>
 	private String name;
 
 	@Size(min = 10)
-	@Column(name = "description")
+	@Column(name = "description",columnDefinition = "TEXT")
 	private String description;
 
 	/*@Embedded
