@@ -92,7 +92,7 @@ public class Reservation
 	private User user;
 
 	@OneToMany( fetch = FetchType.LAZY, mappedBy = "reservation", cascade = CascadeType.ALL )
-	private Set<Order> orders;
+	private Set<Orders> orders;
 
 	@JsonBackReference(value = "property")
 	@ManyToOne(fetch = FetchType.LAZY)

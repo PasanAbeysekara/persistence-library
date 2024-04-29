@@ -59,5 +59,5 @@ public class OrderChoices
 					@JoinColumn( name = "order_id", referencedColumnName = "order_id", insertable = false, updatable = false)
 			}
 	)
-	private Order order;
+	private Orders order;
 }
