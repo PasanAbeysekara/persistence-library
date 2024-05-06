@@ -29,29 +29,30 @@ import java.util.Set;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 @Entity
-@Table(name = "\"order\"")
+@Table(name = "orders")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "orderId")
-public class Order
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "orderId")
+public class Orders
 {
-	@EmbeddedId
-	@EqualsAndHashCode.Include
-	private OrderID orderId;
 
-	@Column( name = "total_amount")
-	private BigDecimal totalAmount;
+    @EmbeddedId
+    @EqualsAndHashCode.Include
+    private OrderID orderId;
 
-	@Size( max = 20 )
-	@Column(name = "amount_currency")
-	private String amountCurrency;
+    @Column( name = "total_amount")
+    private BigDecimal totalAmount;
 
-	@JsonBackReference
-	@ManyToOne( fetch = FetchType.LAZY )
-	@JoinColumn( name = "reservation_id", insertable = false, updatable = false )
-	private Reservation reservation;
+    @Size( max = 20 )
+    @Column(name = "amount_currency")
+    private String amountCurrency;
 
-	@OneToMany( mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true )
-	private Set<OrderChoices> orderChoices;
+    @JsonBackReference
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "reservation_id", insertable = false, updatable = false )
+    private Reservation reservation;
+
+    @OneToMany( mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true )
+    private Set<OrderChoices> orderChoices;
 
 }
