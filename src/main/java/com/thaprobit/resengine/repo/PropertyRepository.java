@@ -3,6 +3,7 @@ package com.thaprobit.resengine.repo;
 import com.thaprobit.resengine.dao.Menu;
 import com.thaprobit.resengine.dao.PropChoices;
 import com.thaprobit.resengine.dao.Property;
+import com.thaprobit.resengine.dao.User;
 import com.thaprobit.resengine.dao.projection.PropContractAndTimeSlots;
 import com.thaprobit.resengine.dao.sys.AvailabilityUnit;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,8 @@ public interface PropertyRepository extends JpaRepository<Property, Long>
 
 	@Query(value = "SELECT propId FROM Property")
 	List<Long> findAllPropId();
+
+	Optional<Property> findByName(String propName);
 
 	@Query(value = "SELECT count(p) FROM Property p where p.currentContId =:id")
 	Integer findPropWithSameContract( @Param("id") Integer currentContId );

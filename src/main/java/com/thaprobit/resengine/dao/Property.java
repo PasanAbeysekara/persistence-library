@@ -18,10 +18,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -212,6 +209,9 @@ public class Property extends RepresentationModel<Property>
 
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Reservation> reservations;
+
+	@ManyToMany(mappedBy = "preferredProperties", fetch = FetchType.LAZY)
+	private Set<User> preferredByUsers;
 
 	public List<LocalTime> getTimeSlots()
 	{

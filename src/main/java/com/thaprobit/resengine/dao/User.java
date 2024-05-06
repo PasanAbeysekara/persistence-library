@@ -2,7 +2,7 @@ package com.thaprobit.resengine.dao;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import java.util.HashSet;
 import java.sql.Date;
 import java.util.Set;
 
@@ -42,13 +42,52 @@ public class User {
 
     @Column(name = "facebook_id")
     private String facebookId;
-    
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reservation> reservations;
 
-    public User() {
+    @Column(name = "birthday")
+    private Date birthday;
+
+    @Column(name = "address1")
+    private String address1;
+
+    @Column(name = "address2")
+    private String address2;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "district")
+    private String district;
+
+
+    @Column(name = "province")
+    private String province;
+
+    @Column(name = "country")
+    private String country;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_preferred_properties",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "prop_id"))
+    private Set<Property> preferredProperties;
+
+//    public User(long userId, String address1, String address2, String city, String district, String province, String country) {
+//        this.userId = userId;
+//        this.address1 = address1;
+//        this.address2 = address2;
+//        this.city = city;
+//        this.district = district;
+//        this.province = province;
+//        this.country = country;
+//    }
+
+    public User(){
 
     }
+
 
 
     public Set<Reservation> getReservations() {
