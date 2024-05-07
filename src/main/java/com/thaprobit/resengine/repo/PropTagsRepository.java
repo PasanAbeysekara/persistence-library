@@ -12,4 +12,11 @@ public interface PropTagsRepository extends JpaRepository<PropTags, PropTagID>
 {
 	@Query(value = "SELECT prop_id FROM {h-schema}prop_tags where tag_id =:tagId", nativeQuery = true)
 	List<Long> findPropertiesForTags( @Param("tagId") Integer tagId );
+
+	@Query(value = "SELECT DISTINCT s.name " +
+			"FROM sys_tags s " +
+			"INNER JOIN prop_tags p ON s.tag_id = p.tag_id " +
+			"INNER JOIN user_preferred_properties u ON u.prop_id = p.prop_id " +
+			"WHERE u.user_id = :userId", nativeQuery = true)
+	List<String> findPreferredTagNamesByUserId(@Param("userId") Long userId);
 }

@@ -31,17 +31,11 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-/*    @Column(name = "birthday")
-    private Date birthday;*/
-
     @Column(name = "role")
     private String role;
 
-    @Column(name = "google_id")
-    private String googleId;
-
-    @Column(name = "facebook_id")
-    private String facebookId;
+    @Column(name = "image")
+    private String image;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Reservation> reservations;
