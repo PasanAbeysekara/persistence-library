@@ -16,6 +16,14 @@
     <name>persistence-library</name>
     <packaging>jar</packaging>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id> <!-- Ensure this matches the ID in your settings.xml -->
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/PasanAbeysekara/persistence-library</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,7 +75,7 @@
             <artifactId>postgresql</artifactId>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
