@@ -3,7 +3,7 @@ name: Maven Package
 on:
   push:
     branches:
-      - master  # Or your defacult branch
+      - master  # Or your default branch
 
 jobs:
   build:
