@@ -20,8 +20,7 @@ import java.util.Set;
 @Entity
 @Table(name = "payment_options")
 @ToString
-public class PaymentOptions
-{
+public class PaymentOptions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "option_id", updatable = false, nullable = false)
@@ -31,13 +30,13 @@ public class PaymentOptions
 	@Column(name = "name")
 	private String name;
 
-	@JsonBackReference
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "prop_payment_options",
-			inverseJoinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
-			joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "option_id")
+			joinColumns = @JoinColumn(name = "option_id", referencedColumnName = "option_id"),
+			inverseJoinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id")
 	)
 	@ToString.Exclude
 	private Set<Property> properties;
 }
+

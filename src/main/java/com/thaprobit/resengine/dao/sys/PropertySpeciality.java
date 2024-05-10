@@ -35,7 +35,7 @@ public class PropertySpeciality
 	private String description;
 
 	@JsonBackReference
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "prop_speciality",
 			inverseJoinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),

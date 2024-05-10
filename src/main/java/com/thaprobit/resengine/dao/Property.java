@@ -158,7 +158,7 @@ public class Property extends RepresentationModel<Property>
 	private ContactDetails contactDetails;
 
 	//@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "prop_speciality",
 			joinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
@@ -167,13 +167,14 @@ public class Property extends RepresentationModel<Property>
 	private Set<PropertySpeciality> propertySpecialities;
 
 	//@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "prop_payment_options",
-			joinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id", insertable = false, updatable = false),
+			joinColumns = @JoinColumn(name = "prop_id", referencedColumnName = "prop_id"),
 			inverseJoinColumns = @JoinColumn(name = "option_id", referencedColumnName = "option_id")
 	)
-	private Set<PaymentOptions> paymentOptions;
+	@ToString.Exclude
+	private Set<PaymentOptions> paymentOptions = new HashSet<>();
 
 	@OneToMany(mappedBy = "properties", fetch = FetchType.LAZY)
 	@Where(clause = "live = true")
